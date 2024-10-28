@@ -1,0 +1,30 @@
+services:
+  jupyter:
+    build: .
+    volumes:
+      - ./notebooks:/app
+    ports:
+      - "8888:8888"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017  # Variable d'environnement pour se connecter à MongoDB
+    networks:
+      - mynetwork
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - mynetwork
+
+volumes:
+  mongo-data:
+
+networks:
+  mynetwork:
+    driver: bridge

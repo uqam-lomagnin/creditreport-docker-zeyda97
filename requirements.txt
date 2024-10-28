@@ -1,0 +1,11 @@
+jupyter
+pymongo
+pandas
+numpy
+seaborn
+matplotlib
+scikit-learn
+xgboost
+eli5
+jinja2==3.0.3
+lime
